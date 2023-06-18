@@ -21,3 +21,4 @@ k = 3
 print(containsNearbyDuplicate(nums, k))
 print("11")
 print('2222')
+print('333')
