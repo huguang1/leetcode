@@ -20,4 +20,4 @@ nums = [1, 2, 3, 1]
 k = 3
 print(containsNearbyDuplicate(nums, k))
 print("11")
-
+print('2222')
