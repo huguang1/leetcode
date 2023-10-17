@@ -2,6 +2,8 @@
 704: 二分查找
 其核心逻辑是为了找中点，其难点是边界条件的确立
 """
+
+
 def search(nums, target):
     l, r = 0, len(nums)-1
     while l <= r:
