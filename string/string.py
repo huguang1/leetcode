@@ -1,103 +1,95 @@
 """
-242. 有效的字母异位词， 对数据统计个数
-"""
-import collections
-
-
-def anagram(s, t):
-    return collections.Counter(s) == collections.Counter(t)
-
-
-"""
-349. 两个数组的交集, 统计数据是否存在
+344. 反转字符串,
 """
 
 
-def intersection(nums1, nums2):
-    return list(set(nums1) & set(nums2))
+def reverseString(s):
+    s = s[::-1]
+    return s
 
 
 """
-202. 快乐数, 统计数据是否存在
+541. 反转字符串 II
 """
 
 
-def isHappy(n):
-    def count(n):
-        n = str(n)
-        return sum([int(i)**2 for i in n])
-    s = set()
-    while n != 1:
-        s.add(n)
-        n = count(n)
-        if n in s:
-            return False
-    return True
-
-
-"""
-1. 两数之和, 统计数据是否存在
-"""
-import collections
-
-
-def twosum(nums, target):
-    d = collections.defaultdict(int)
-    for i, v in enumerate(nums):
-        if v in d:
-            return [d[v], i]
-        d[target-v] = i
-
-
-"""
-454. 四数相加 II, 对数据统计个数
-"""
-
-
-def fourSum(nums1, nums2, nums3, nums4):
-    d = collections.defaultdict(int)
-    for i in nums1:
-        for j in nums2:
-            d[i+j] += 1
-    ans = 0
-    for i in nums3:
-        for j in nums4:
-            ans += d.get(-(i+j), 0)
+def reverseStr(s, k):
+    new = []
+    for i in range(0, len(s), k):
+        new.append(s[i:i+k])
+    ans = ''
+    for i, v in enumerate(new):
+        if i%2 == 0:
+            ans += v[::-1]
+        else:
+            ans += v
     return ans
 
 
 """
-383. 赎金信， 对数据统计个数
+151. 反转字符串中的单词
 """
 
 
-def canConstruct(ransomNote, magazine):
-    d = collections.Counter(magazine)
-    d1 = collections.Counter(ransomNote)
-    for k, v in d1.items():
-        if k not in d or v > d[k]:
-            return False
-    return True
+def reverseWords(s):
+    s = s.split(' ')
+    news = []
+    for i in s:
+        if i:
+            news.append(i)
+    return ' '.join(news[::-1])
+
+
+"""
+LCR 122. 路径加密, 字符串替换
+"""
+
+
+def pathEncryption(path):
+    return path.replace('.', ' ')
+
+
+"""
+28. 找出字符串中第一个匹配项的下标，匹配字符串
+"""
+
+
+def strStr(haystack, needle):
+    l = len(needle)
+    for i in range(len(haystack)):
+        if haystack[i:i + l] == needle:
+            return i
+    return -1
+
+
+"""
+459. 重复的子字符串, 匹配字符串
+"""
+
+
+def repeatedSubstringPattern(s):
+    n = len(s)
+    for i in range(1, n // 2 + 1):
+        if s[:i] * (n // i) == s:
+            return True
+    return False
 
 
 if __name__ == '__main__':
-    # s, t = "anagram", "nagaram"
-    # print(anagram(s, t))
-    # nums1, nums2 = [1, 2, 2, 1], [2, 2]
-    # print(intersection(nums1, nums2))
-    # print(isHappy(2))
-    # nums, target = [2, 7, 11, 15], 9
-    # print(twosum(nums, target))
-    # nums1, nums2, nums3, nums4 = [1, 2], [-2, -1], [-1, 2], [0, 2]
-    # ans = fourSum(nums1, nums2, nums3, nums4)
+    # ans = reverseString('abd')
     # print(ans)
-    ransomNote, magazine = "aa", "ab"
-    ans = canConstruct(ransomNote, magazine)
+    # s, k = "abcdefg", 2
+    # ans = reverseStr(s, k)
+    # print(ans)
+    # path = "a.aef.qerf.bb"
+    # ans = pathEncryption(path)
+    # print(ans)
+    # haystack, needle = "sadbutsad", "sad"
+    # ans = strStr(haystack, needle)
+    # print(ans)
+    s = "abab"
+    ans = repeatedSubstringPattern(s)
     print(ans)
-
-
-
-
 
 
 
